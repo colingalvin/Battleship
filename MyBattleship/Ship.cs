@@ -12,17 +12,13 @@ namespace MyBattleship
 
         public string name;
         public int size;
-        public int hitsTaken;
+        public int hitsRemaining;
         public string shipID;
         public string hitShipID;
 
         // position on board ?
 
         // constructor (SPAWN)
-        public Ship()
-        {
-            hitsTaken = 0;
-        }
 
         // member methods (CAN DO)
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -138,6 +139,50 @@ namespace MyBattleship
                     break;
             }
 
+        }
+
+        public void Attack(string coordiantes, Player player)
+        {
+            int arrayColumnIndex = ParseColumn(coordiantes);
+            int arrayRowIndex = ParseRow(coordiantes);
+            if(player.ownGameboard.board[arrayColumnIndex, arrayRowIndex] == "   ") // If no ship present
+            {
+                player.ownGameboard.board[arrayColumnIndex, arrayRowIndex] = " o "; // Change to miss on opponent's board
+                opponentGameboard.board[arrayColumnIndex, arrayRowIndex] = " o "; // Change to miss on own gameboard
+                Console.WriteLine($"Miss! {player.name}, your turn.");
+            }
+            else
+            {
+                switch(player.ownGameboard.board[arrayColumnIndex, arrayRowIndex])
+                {
+                    case " D ": // If destroyer is present
+                        player.ownGameboard.board[arrayColumnIndex, arrayRowIndex] = player.ships[0].hitShipID; // Change to miss on opponent's board
+                        player.ships[0].hitsRemaining--; // Decrease remaining hits ship can take
+                        opponentGameboard.board[arrayColumnIndex, arrayRowIndex] = " x "; // Change to miss on own gameboard
+                        Console.WriteLine($"Hit! {player.name}, your turn.");
+                        break;
+                    case " S ": // If submarine is present
+                        player.ownGameboard.board[arrayColumnIndex, arrayRowIndex] = player.ships[1].hitShipID; // Change to miss on opponent's board
+                        player.ships[1].hitsRemaining--; // Decrease remaining hits ship can take
+                        opponentGameboard.board[arrayColumnIndex, arrayRowIndex] = " x "; // Change to miss on own gameboard
+                        Console.WriteLine($"Hit! {player.name}, your turn.");
+                        break;
+                    case " B ": // If battleship is present
+                        player.ownGameboard.board[arrayColumnIndex, arrayRowIndex] = player.ships[2].hitShipID; // Change to miss on opponent's board
+                        player.ships[2].hitsRemaining--; // Decrease remaining hits ship can take
+                        opponentGameboard.board[arrayColumnIndex, arrayRowIndex] = " x "; // Change to miss on own gameboard
+                        Console.WriteLine($"Hit! {player.name}, your turn.");
+                        break;
+                    case " A ": // If aircraft carrier is present
+                        player.ownGameboard.board[arrayColumnIndex, arrayRowIndex] = player.ships[3].hitShipID; // Change to miss on opponent's board
+                        player.ships[3].hitsRemaining--; // Decrease remaining hits ship can take
+                        opponentGameboard.board[arrayColumnIndex, arrayRowIndex] = " x "; // Change to miss on own gameboard
+                        Console.WriteLine($"Hit! {player.name}, your turn.");
+                        break;
+                }
+            }
+            Console.WriteLine("Press enter for next turn!");
+            Console.ReadLine();
         }
 
         public int ParseRow(string coordinates)

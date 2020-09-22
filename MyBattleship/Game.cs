@@ -69,7 +69,7 @@ namespace MyBattleship
 
                     Console.Write("\nChoose opponent coordinates to attack: "); // Player chooses where to attack
                     string userInput = Console.ReadLine(); // user input coordinates - verification needed
-
+                    playerOne.Attack(userInput, playerTwo);
                     SwitchTurns();
                 }
                 else // if player two's turn
@@ -79,7 +79,7 @@ namespace MyBattleship
                     DisplayGameBoard(playerTwo.ownGameboard);
                     Console.Write("Choose coordinates to attack: ");
                     string userInput = Console.ReadLine();
-
+                    playerTwo.Attack(userInput, playerOne);
                     SwitchTurns();
                 }
             }

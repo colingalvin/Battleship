@@ -12,10 +12,10 @@ namespace MyBattleship
 
         // constructor (SPAWN)
         public Destroyer()
-            :base()
         {
             name = "Destroyer";
             size = 2;
+            hitsRemaining = size;
             shipID = " D ";
             hitShipID = "xDx";
         }
