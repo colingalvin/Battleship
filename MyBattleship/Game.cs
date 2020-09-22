@@ -45,7 +45,9 @@ namespace MyBattleship
                 "Players will score a point for each opponent ship they successfully destroy.\n" +
                 "Play will continue until all of one player's ships are destroyed!\n");
 
-            Console.WriteLine("Each player will place their ships on the board, and then the battle will begin!");
+            Console.Write("Press enter to create players and begin battle!");
+            Console.ReadLine();
+            Console.Clear();
         }
         public void PlayGame()
         {
