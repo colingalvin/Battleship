@@ -31,16 +31,15 @@ namespace MyBattleship
 
         public static void DisplayWelcome()
         {
-            Console.WriteLine("Welcome to Battleship, the console version of the classic game!\n");
+            Console.WriteLine("Welcome to Battleship, the console version of the classic board game!\n");
             // Rules
-            Console.WriteLine("During each turn, two boards will be displayed.\n\n" +
-                "The top board shows where each player has attacked their opponent's board, hits (X) and misses (O).\n\n" +
-                "The bottom board shows the player's own board:\n" +
+            Console.WriteLine("During each turn, two boards will be displayed:\n" +
+                "   The top board shows where each player has attacked their opponent's board, hits (x) and misses (o).\n" +
+                "   The bottom board shows the player's own board:\n" +
                 "\tEach ship's placement is denoted with the proper letter:\n" +
                 "\t(D - destroyer, S - submarine, B - battleship, A - aircraft carrier)\n\n" +
-                "Opponent's attempts will be displayed each round.\n" +
-                "Misses will be shown as \"o\", while hits will be shown as \"x\" surrounding the player's ship.\n" +
-                "Each round, players will enter coordinates to attack.\n" +
+                "Misses will be shown as \"o\", while hits will be shown as \"x\" surrounding the player's ship.\n\n" +
+                "Each round, players will enter coordinates to attack. (ex. a2, f7, etc.)\n" +
                 "Hits and misses will be displayed, and boards will be updated automatically.\n" +
                 "Players will score a point for each opponent ship they successfully destroy.\n" +
                 "Play will continue until all of one player's ships are destroyed!\n");
@@ -64,10 +63,10 @@ namespace MyBattleship
 
                     Console.WriteLine("Opponent's Board:");
                     DisplayGameBoard(playerOne.opponentGameboard); // opponent - only attempts made
-                    Console.WriteLine("\nYour Board:");
+                    Console.WriteLine("Your Board:");
                     DisplayGameBoard(playerOne.ownGameboard); // own - where ships are, where opponent has attacked
 
-                    Console.Write("\nChoose opponent coordinates to attack: "); // Player chooses where to attack
+                    Console.Write("Choose opponent coordinates to attack: "); // Player chooses where to attack
                     string userInput = Console.ReadLine(); // user input coordinates - verification needed
                     playerOne.Attack(userInput, playerTwo);
                     SwitchTurns();
@@ -75,10 +74,16 @@ namespace MyBattleship
                 else // if player two's turn
                 {
                     Console.Clear();
-                    DisplayGameBoard(playerTwo.opponentGameboard);
-                    DisplayGameBoard(playerTwo.ownGameboard);
-                    Console.Write("Choose coordinates to attack: ");
-                    string userInput = Console.ReadLine();
+                    Console.WriteLine($"{playerTwo.name}'s turn:\n");
+                    // Display game boards (opponent on top, own on bottom)
+
+                    Console.WriteLine("Opponent's Board:");
+                    DisplayGameBoard(playerTwo.opponentGameboard); // opponent - only attempts made
+                    Console.WriteLine("Your Board:");
+                    DisplayGameBoard(playerTwo.ownGameboard); // own - where ships are, where opponent has attacked
+
+                    Console.Write("Choose opponent coordinates to attack: "); // Player chooses where to attack
+                    string userInput = Console.ReadLine(); // user input coordinates - verification needed
                     playerTwo.Attack(userInput, playerOne);
                     SwitchTurns();
                 }

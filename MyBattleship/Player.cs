@@ -49,21 +49,25 @@ namespace MyBattleship
                 Console.Clear();
                 Console.WriteLine($"{name}, here is your current game board:\n");
                 Game.DisplayGameBoard(ownGameboard); // display current board
+
                 Console.Write("Ships will be placed either horizontally (left to right)" +
                     "\n\tor vertically (top to bottom) from your chosen starting point." +
-                    $"\n\n{name}, choose the starting position for your {ship.name} (takes up {ship.size} places): "); // choose starting point on board (either top or left of ship)
+                    $"\n\nChoose the starting position for your {ship.name} (takes up {ship.size} places): "); // choose starting point on board (either top or left of ship)
                 string startingPosition = Console.ReadLine(); // Needs verification
-                Console.WriteLine("Type 1 to place your ship horizontally, Type 2 to place your ship vertically"); // choose whether to place ship across or down from that point
+
+                Console.WriteLine("\nType 1 to place your ship horizontally, Type 2 to place your ship vertically"); // choose whether to place ship across or down from that point
                 string orientation = Console.ReadLine(); // Needs verification
                 // verify if it will run into any other ship currently on the board
+
                 PlaceShipOnBoard(startingPosition, orientation, ship);
             }
-            Console.WriteLine("Here is where you chose to put your ships: \n");
+            Console.Clear();
+            Console.WriteLine($"{name}, here is where you chose to put your ships: \n");
             Game.DisplayGameBoard(ownGameboard); // Display final chosen orientation of board
-            Console.WriteLine("\nPress enter to continue.");
+            // Option to modify choices later on?
+            Console.WriteLine("Press enter to finish.");
             Console.ReadLine();
             Console.Clear();
-            // Option to modify choices later on
         }
 
         public void PlaceShipOnBoard(string coordiantes, string orientation, Ship ship) // needs verification
@@ -138,7 +142,6 @@ namespace MyBattleship
                     }
                     break;
             }
-
         }
 
         public void Attack(string coordiantes, Player player)
@@ -149,7 +152,7 @@ namespace MyBattleship
             {
                 player.ownGameboard.board[arrayColumnIndex, arrayRowIndex] = " o "; // Change to miss on opponent's board
                 opponentGameboard.board[arrayColumnIndex, arrayRowIndex] = " o "; // Change to miss on own gameboard
-                Console.WriteLine($"Miss! {player.name}, your turn.");
+                Console.WriteLine("Miss!");
             }
             else
             {
@@ -159,27 +162,24 @@ namespace MyBattleship
                         player.ownGameboard.board[arrayColumnIndex, arrayRowIndex] = player.ships[0].hitShipID; // Change to miss on opponent's board
                         player.ships[0].hitsRemaining--; // Decrease remaining hits ship can take
                         opponentGameboard.board[arrayColumnIndex, arrayRowIndex] = " x "; // Change to miss on own gameboard
-                        Console.WriteLine($"Hit! {player.name}, your turn.");
                         break;
                     case " S ": // If submarine is present
                         player.ownGameboard.board[arrayColumnIndex, arrayRowIndex] = player.ships[1].hitShipID; // Change to miss on opponent's board
                         player.ships[1].hitsRemaining--; // Decrease remaining hits ship can take
                         opponentGameboard.board[arrayColumnIndex, arrayRowIndex] = " x "; // Change to miss on own gameboard
-                        Console.WriteLine($"Hit! {player.name}, your turn.");
                         break;
                     case " B ": // If battleship is present
                         player.ownGameboard.board[arrayColumnIndex, arrayRowIndex] = player.ships[2].hitShipID; // Change to miss on opponent's board
                         player.ships[2].hitsRemaining--; // Decrease remaining hits ship can take
                         opponentGameboard.board[arrayColumnIndex, arrayRowIndex] = " x "; // Change to miss on own gameboard
-                        Console.WriteLine($"Hit! {player.name}, your turn.");
                         break;
                     case " A ": // If aircraft carrier is present
                         player.ownGameboard.board[arrayColumnIndex, arrayRowIndex] = player.ships[3].hitShipID; // Change to miss on opponent's board
                         player.ships[3].hitsRemaining--; // Decrease remaining hits ship can take
                         opponentGameboard.board[arrayColumnIndex, arrayRowIndex] = " x "; // Change to miss on own gameboard
-                        Console.WriteLine($"Hit! {player.name}, your turn.");
                         break;
                 }
+            Console.WriteLine("Hit!");
             }
             Console.WriteLine("Press enter for next turn!");
             Console.ReadLine();
@@ -230,9 +230,5 @@ namespace MyBattleship
             int arrayColumnIndex = int.Parse(coordiantes.Substring(1));
             return arrayColumnIndex;
         }
-                
-                
-            // attack
-                // choose point on board to attack (user input)
     }
 }
