@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,16 +11,45 @@ namespace MyBattleship
     {
         // member variables (HAS A)
 
+        public Player playerOne;
+        public Player playerTwo;
+
         // constructor (SPAWN)
-            // player 1
-            // player 2
+        public Game()
+        {
+            Console.Write("Enter name for Player One: ");
+            string playerOneName = Console.ReadLine();
+            playerOne = new Player(playerOneName);
+
+            Console.Write("Enter name for Player Two: ");
+            string playerTwoName = Console.ReadLine();
+            playerTwo = new Player(playerTwoName);
+        }
 
         // member methods (CAN DO)
             // welcome/display rules
-            // new game
-                // create players
-                    // each player has 2 gameboards
-                    // each player has list of 4 ships
+
+        public static void DisplayWelcome()
+        {
+            Console.WriteLine("Welcome to Battleship, the console version of the classic game!\n");
+            Console.WriteLine("Each player will place their ships on the board, and then the battle will begin!");
+        }
+        public void PlayGame()
+        {
+            DisplayGameBoard(playerOne.ownGameboard);
+        }
+
+        public void DisplayGameBoard(GameBoard gameboard)
+        {
+            for (int i = 0; i < 11; i++)
+            {
+                for (int j = 0; j < 11; j++)
+                {
+                    Console.Write(gameboard.board[i,j]);
+                }
+                Console.WriteLine();
+            }
+        }
             // play game
                 // choose player to go first (default to player 1 at first)
                 // Display game boards (opponent on top, own on bottom)

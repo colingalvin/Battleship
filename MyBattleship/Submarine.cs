@@ -11,6 +11,12 @@ namespace MyBattleship
         // member variables (HAS A)
 
         // constructor (SPAWN)
+        public Submarine()
+            :base()
+        {
+            name = "Submarine";
+            size = 3;
+        }
 
         // member methods (CAN DO)
     }

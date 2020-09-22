@@ -9,14 +9,32 @@ namespace MyBattleship
     class Player
     {
         // member variables (HAS A)
-            // Gameboard (own)
-            // Gameboard (opponent)
-            // List of ships
-            // name
-            // score
-            // isTurn
+
+        public GameBoard ownGameboard;
+        public GameBoard opponentGameboard;
+        public List<Ship> ships;
+        public string name;
+        public int score;
+        public bool isTurn;
 
         // constructor (SPAWN)
+        public Player(string name)
+        {
+            this.name = name;
+            ownGameboard = new GameBoard();
+            opponentGameboard = new GameBoard();
+            ships = new List<Ship>();
+            Destroyer destroyer = new Destroyer();
+            Submarine submarine = new Submarine();
+            Battleship battleship = new Battleship();
+            AircraftCarrier aircraftCarrier = new AircraftCarrier();
+            ships.Add(destroyer);
+            ships.Add(submarine);
+            ships.Add(battleship);
+            ships.Add(aircraftCarrier);
+            score = 0;
+            isTurn = false;
+        }
             // initialize all variables
             // choose where ships go
 
