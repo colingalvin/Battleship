@@ -58,7 +58,8 @@ namespace MyBattleship
                 if (playerOne.isTurn) // if player one's turn
                 {
                     Console.Clear();
-                    Console.WriteLine($"{playerOne.name}'s turn:\n");
+                    Console.Write($"{playerOne.name}'s turn\t\t");
+                    DisplayScore();
                     // Display game boards (opponent on top, own on bottom)
 
                     Console.WriteLine("Opponent's Board:");
@@ -74,7 +75,8 @@ namespace MyBattleship
                 else // if player two's turn
                 {
                     Console.Clear();
-                    Console.WriteLine($"{playerTwo.name}'s turn:\n");
+                    Console.Write($"{playerTwo.name}'s turn\t\t");
+                    DisplayScore();
                     // Display game boards (opponent on top, own on bottom)
 
                     Console.WriteLine("Opponent's Board:");
@@ -88,11 +90,19 @@ namespace MyBattleship
                     SwitchTurns();
                 }
             }
+            EndGame();
             // check opponent's own gameboard
             // if only spaces, replace with o and display miss
             // else if it contains anything other than spaces, replace with x_x and display hit
             // check own gameboard, replace with X or O for hit or miss
             // Display updated game boards, repeat
+        }
+
+        public void EndGame()
+        {
+            Console.Clear();
+            Console.WriteLine($"Game over! Final score: {playerOne.name}: {playerOne.score}, {playerTwo.name}: {playerTwo.score}");
+            Console.ReadLine();
         }
 
         public void ChooseFirstPlayer()
@@ -119,6 +129,9 @@ namespace MyBattleship
             Console.WriteLine(); // blank line after boards
         }
 
-            
+        public void DisplayScore()
+        {
+            Console.WriteLine($"Score: {playerOne.name}: {playerOne.score}, {playerTwo.name}: {playerTwo.score}");
+        }
     }
 }

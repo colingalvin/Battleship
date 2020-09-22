@@ -180,9 +180,25 @@ namespace MyBattleship
                         break;
                 }
             Console.WriteLine("Hit!");
+            YouSunkMyBattleship(player);
             }
             Console.WriteLine("Press enter for next turn!");
             Console.ReadLine();
+        }
+
+        public void YouSunkMyBattleship(Player player)
+        {
+            int i = 0;
+            foreach (Ship ship in player.ships)
+            {
+                if(ship.hitsRemaining == 0)
+                {
+                    Console.WriteLine($"You sunk {player.name}'s {player.ships[i].name}!");
+                    player.ships[i].hitsRemaining = -1;
+                    score++;
+                }
+                i++;
+            }
         }
 
         public int ParseRow(string coordinates)
