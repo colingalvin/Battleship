@@ -13,6 +13,9 @@ namespace MyBattleship
         public string name;
         public int size;
         public int hitsTaken;
+        public string shipID;
+        public string hitShipID;
+
         // position on board ?
 
         // constructor (SPAWN)

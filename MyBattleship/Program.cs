@@ -11,6 +11,7 @@ namespace MyBattleship
     {
         static void Main(string[] args)
         {
+            Game.DisplayWelcome();
             Game game = new Game();
             game.PlayGame();
         }

@@ -16,6 +16,8 @@ namespace MyBattleship
         {
             name = "Submarine";
             size = 3;
+            shipID = " S ";
+            hitShipID = "xSx";
         }
 
         // member methods (CAN DO)

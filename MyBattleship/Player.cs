@@ -34,17 +34,38 @@ namespace MyBattleship
             ships.Add(aircraftCarrier);
             score = 0;
             isTurn = false;
+            // PlaceShipOnBoard();
         }
             // initialize all variables
             // choose where ships go
 
         // member methods (CAN DO)
-            // place ships on board
-                // display current board
-                // choose starting point on board (either top or left of ship)
-                // choose whether to place ship across or down from that point
-                    // verify if it will run into any other ship currently on the board
-                // refresh board with ship in place, repeat for other 3 ships
+
+        public void PlaceShipOnBoard()
+        {
+            foreach (Ship ship in ships)
+            {
+                Game.DisplayGameBoard(ownGameboard); // display current board
+                Console.Write($"Choose the top/left starting position for your {ship.name}: "); // choose starting point on board (either top or left of ship)
+                string startingPosition = Console.ReadLine(); // Needs verification
+                Console.WriteLine("Type 1 to place your ship horizontally, Type 2 to place your ship vertically"); // choose whether to place ship across or down from that point
+                string orientation = Console.ReadLine(); // Needs verification
+                // verify if it will run into any other ship currently on the board
+            }
+            Console.WriteLine("Here is where you chose to put your ships: \n");
+            Game.DisplayGameBoard(ownGameboard); // Display final chosen orientation of board
+            Console.WriteLine("\nPress enter to continue.");
+            // Option to modify choices later on
+        }
+
+        public void ParseCoordinates()
+        {
+            // take in user input coordiantes
+            // translate to array coordinates
+            // modify array correctly
+        }
+                
+                
             // attack
                 // choose point on board to attack (user input)
     }
