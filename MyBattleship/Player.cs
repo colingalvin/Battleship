@@ -51,12 +51,13 @@ namespace MyBattleship
                 Game.DisplayGameBoard(ownGameboard); // display current board
 
                 Console.Write("Ships will be placed either horizontally (left to right)" +
-                    "\n\tor vertically (top to bottom) from your chosen starting point." +
-                    $"\n\nChoose the starting position for your {ship.name} (takes up {ship.size} places): "); // choose starting point on board (either top or left of ship)
+                    "\n\tor vertically (top to bottom) from your chosen starting point.\n\n");
+                Console.Write($"Choose the starting position for your {ship.name} (takes up {ship.size} places): "); // choose starting point on board (either top or left of ship)
                 string startingPosition = Console.ReadLine(); // Needs verification
 
-                Console.WriteLine("\nType 1 to place your ship horizontally, Type 2 to place your ship vertically"); // choose whether to place ship across or down from that point
+                Console.Write("\nType 1 to place your ship horizontally, Type 2 to place your ship vertically: "); // choose whether to place ship across or down from that point
                 string orientation = Console.ReadLine(); // Needs verification
+
                 // verify if it will run into any other ship currently on the board
 
                 PlaceShipOnBoard(startingPosition, orientation, ship);
@@ -65,7 +66,7 @@ namespace MyBattleship
             Console.WriteLine($"{name}, here is where you chose to put your ships: \n");
             Game.DisplayGameBoard(ownGameboard); // Display final chosen orientation of board
             // Option to modify choices later on?
-            Console.WriteLine("Press enter to finish.");
+            Console.Write("Press enter to finish.");
             Console.ReadLine();
             Console.Clear();
         }
@@ -80,12 +81,12 @@ namespace MyBattleship
                     switch(orientation)
                     {
                         case "1": // horizontal
-                            ownGameboard.board[arrayColumnIndex, arrayRowIndex] = ship.shipID;
-                            ownGameboard.board[(arrayColumnIndex), (arrayRowIndex + 1)] = ship.shipID;
+                            ownGameboard.board[arrayRowIndex, arrayColumnIndex] = ship.shipID;
+                            ownGameboard.board[arrayRowIndex, (arrayColumnIndex + 1)] = ship.shipID;
                             break;
                         case "2": // vertical
-                            ownGameboard.board[arrayColumnIndex, arrayRowIndex] = ship.shipID;
-                            ownGameboard.board[(arrayColumnIndex + 1), arrayRowIndex] = ship.shipID;
+                            ownGameboard.board[arrayRowIndex, arrayColumnIndex] = ship.shipID;
+                            ownGameboard.board[(arrayRowIndex + 1), arrayColumnIndex] = ship.shipID;
                             break;
                     }
                     break;
@@ -93,14 +94,14 @@ namespace MyBattleship
                     switch (orientation)
                     {
                         case "1": // horizontal
-                            ownGameboard.board[arrayColumnIndex, arrayRowIndex] = ship.shipID;
-                            ownGameboard.board[(arrayColumnIndex), (arrayRowIndex + 1)] = ship.shipID;
-                            ownGameboard.board[(arrayColumnIndex), (arrayRowIndex + 2)] = ship.shipID;
+                            ownGameboard.board[arrayRowIndex, arrayColumnIndex] = ship.shipID;
+                            ownGameboard.board[arrayRowIndex, (arrayColumnIndex + 1)] = ship.shipID;
+                            ownGameboard.board[arrayRowIndex, (arrayColumnIndex + 2)] = ship.shipID;
                             break;
                         case "2": // vertical
-                            ownGameboard.board[arrayColumnIndex, arrayRowIndex] = ship.shipID;
-                            ownGameboard.board[(arrayColumnIndex + 1), arrayRowIndex] = ship.shipID;
-                            ownGameboard.board[(arrayColumnIndex + 2), arrayRowIndex] = ship.shipID;
+                            ownGameboard.board[arrayRowIndex, arrayColumnIndex] = ship.shipID;
+                            ownGameboard.board[(arrayRowIndex + 1), arrayColumnIndex] = ship.shipID;
+                            ownGameboard.board[(arrayRowIndex + 2), arrayColumnIndex] = ship.shipID;
                             break;
                     }
                     break;
@@ -109,16 +110,16 @@ namespace MyBattleship
                     {
                         case "1": // horizontal
 
-                            ownGameboard.board[arrayColumnIndex, arrayRowIndex] = ship.shipID;
-                            ownGameboard.board[(arrayColumnIndex), (arrayRowIndex + 1)] = ship.shipID;
-                            ownGameboard.board[(arrayColumnIndex), (arrayRowIndex + 2)] = ship.shipID;
-                            ownGameboard.board[(arrayColumnIndex), (arrayRowIndex + 3)] = ship.shipID;
+                            ownGameboard.board[arrayRowIndex, arrayColumnIndex] = ship.shipID;
+                            ownGameboard.board[arrayRowIndex, (arrayColumnIndex + 1)] = ship.shipID;
+                            ownGameboard.board[arrayRowIndex, (arrayColumnIndex + 2)] = ship.shipID;
+                            ownGameboard.board[arrayRowIndex, (arrayColumnIndex + 3)] = ship.shipID;
                             break;
                         case "2": // vertical
-                            ownGameboard.board[arrayColumnIndex, arrayRowIndex] = ship.shipID;
-                            ownGameboard.board[(arrayColumnIndex + 1), arrayRowIndex] = ship.shipID;
-                            ownGameboard.board[(arrayColumnIndex + 2), arrayRowIndex] = ship.shipID;
-                            ownGameboard.board[(arrayColumnIndex + 3), arrayRowIndex] = ship.shipID;
+                            ownGameboard.board[arrayRowIndex, arrayColumnIndex] = ship.shipID;
+                            ownGameboard.board[(arrayRowIndex + 1), arrayColumnIndex] = ship.shipID;
+                            ownGameboard.board[(arrayRowIndex + 2), arrayColumnIndex] = ship.shipID;
+                            ownGameboard.board[(arrayRowIndex + 3), arrayColumnIndex] = ship.shipID;
                             break;
                     }
                     break;
@@ -126,18 +127,18 @@ namespace MyBattleship
                     switch (orientation)
                     {
                         case "1": // horizontal
-                            ownGameboard.board[arrayColumnIndex, arrayRowIndex] = ship.shipID;
-                            ownGameboard.board[(arrayColumnIndex), (arrayRowIndex + 1)] = ship.shipID;
-                            ownGameboard.board[(arrayColumnIndex), (arrayRowIndex + 2)] = ship.shipID;
-                            ownGameboard.board[(arrayColumnIndex), (arrayRowIndex + 3)] = ship.shipID;
-                            ownGameboard.board[(arrayColumnIndex), (arrayRowIndex + 4)] = ship.shipID;
+                            ownGameboard.board[arrayRowIndex, arrayColumnIndex] = ship.shipID;
+                            ownGameboard.board[arrayRowIndex, (arrayColumnIndex + 1)] = ship.shipID;
+                            ownGameboard.board[arrayRowIndex, (arrayColumnIndex + 2)] = ship.shipID;
+                            ownGameboard.board[arrayRowIndex, (arrayColumnIndex + 3)] = ship.shipID;
+                            ownGameboard.board[arrayRowIndex, (arrayColumnIndex + 4)] = ship.shipID;
                             break;
                         case "2": // vertical
-                            ownGameboard.board[arrayColumnIndex, arrayRowIndex] = ship.shipID;
-                            ownGameboard.board[(arrayColumnIndex + 1), arrayRowIndex] = ship.shipID;
-                            ownGameboard.board[(arrayColumnIndex + 2), arrayRowIndex] = ship.shipID;
-                            ownGameboard.board[(arrayColumnIndex + 3), arrayRowIndex] = ship.shipID;
-                            ownGameboard.board[(arrayColumnIndex + 4), arrayRowIndex] = ship.shipID;
+                            ownGameboard.board[arrayRowIndex, arrayColumnIndex] = ship.shipID;
+                            ownGameboard.board[(arrayRowIndex + 1), arrayColumnIndex] = ship.shipID;
+                            ownGameboard.board[(arrayRowIndex + 2), arrayColumnIndex] = ship.shipID;
+                            ownGameboard.board[(arrayRowIndex + 3), arrayColumnIndex] = ship.shipID;
+                            ownGameboard.board[(arrayRowIndex + 4), arrayColumnIndex] = ship.shipID;
                             break;
                     }
                     break;
@@ -146,40 +147,40 @@ namespace MyBattleship
 
         public void Attack(string coordiantes, Player player)
         {
-            int arrayColumnIndex = ParseColumn(coordiantes);
             int arrayRowIndex = ParseRow(coordiantes);
-            if(player.ownGameboard.board[arrayColumnIndex, arrayRowIndex] == "   ") // If no ship present
+            int arrayColumnIndex = ParseColumn(coordiantes);
+            if(player.ownGameboard.board[arrayRowIndex, arrayColumnIndex] == "   ") // If no ship present
             {
-                player.ownGameboard.board[arrayColumnIndex, arrayRowIndex] = " o "; // Change to miss on opponent's board
-                opponentGameboard.board[arrayColumnIndex, arrayRowIndex] = " o "; // Change to miss on own gameboard
+                player.ownGameboard.board[arrayRowIndex, arrayColumnIndex] = " o "; // Change to miss on opponent's board
+                opponentGameboard.board[arrayRowIndex, arrayColumnIndex] = " o "; // Change to miss on own gameboard
                 Console.WriteLine("Miss!");
             }
             else
             {
-                switch(player.ownGameboard.board[arrayColumnIndex, arrayRowIndex])
+                switch(player.ownGameboard.board[arrayRowIndex, arrayColumnIndex])
                 {
                     case " D ": // If destroyer is present
-                        player.ownGameboard.board[arrayColumnIndex, arrayRowIndex] = player.ships[0].hitShipID; // Change to miss on opponent's board
+                        player.ownGameboard.board[arrayRowIndex, arrayColumnIndex] = player.ships[0].hitShipID; // Change to miss on opponent's board
                         player.ships[0].hitsRemaining--; // Decrease remaining hits ship can take
-                        opponentGameboard.board[arrayColumnIndex, arrayRowIndex] = " x "; // Change to miss on own gameboard
+                        opponentGameboard.board[arrayRowIndex, arrayColumnIndex] = " x "; // Change to miss on own gameboard
                         break;
                     case " S ": // If submarine is present
-                        player.ownGameboard.board[arrayColumnIndex, arrayRowIndex] = player.ships[1].hitShipID; // Change to miss on opponent's board
+                        player.ownGameboard.board[arrayRowIndex, arrayColumnIndex] = player.ships[1].hitShipID; // Change to miss on opponent's board
                         player.ships[1].hitsRemaining--; // Decrease remaining hits ship can take
-                        opponentGameboard.board[arrayColumnIndex, arrayRowIndex] = " x "; // Change to miss on own gameboard
+                        opponentGameboard.board[arrayRowIndex, arrayColumnIndex] = " x "; // Change to miss on own gameboard
                         break;
                     case " B ": // If battleship is present
-                        player.ownGameboard.board[arrayColumnIndex, arrayRowIndex] = player.ships[2].hitShipID; // Change to miss on opponent's board
+                        player.ownGameboard.board[arrayRowIndex, arrayColumnIndex] = player.ships[2].hitShipID; // Change to miss on opponent's board
                         player.ships[2].hitsRemaining--; // Decrease remaining hits ship can take
-                        opponentGameboard.board[arrayColumnIndex, arrayRowIndex] = " x "; // Change to miss on own gameboard
+                        opponentGameboard.board[arrayRowIndex, arrayColumnIndex] = " x "; // Change to miss on own gameboard
                         break;
                     case " A ": // If aircraft carrier is present
-                        player.ownGameboard.board[arrayColumnIndex, arrayRowIndex] = player.ships[3].hitShipID; // Change to miss on opponent's board
+                        player.ownGameboard.board[arrayRowIndex, arrayColumnIndex] = player.ships[3].hitShipID; // Change to miss on opponent's board
                         player.ships[3].hitsRemaining--; // Decrease remaining hits ship can take
-                        opponentGameboard.board[arrayColumnIndex, arrayRowIndex] = " x "; // Change to miss on own gameboard
+                        opponentGameboard.board[arrayRowIndex, arrayColumnIndex] = " x "; // Change to miss on own gameboard
                         break;
                 }
-            Console.WriteLine("Hit!");
+            Console.Write("Hit! ");
             YouSunkMyBattleship(player);
             }
             Console.WriteLine("Press enter for next turn!");
@@ -201,50 +202,50 @@ namespace MyBattleship
             }
         }
 
-        public int ParseRow(string coordinates)
+        public int ParseColumn(string coordinates)
         {
-            int arrayRowIndex = -1;
+            int arrayColumnIndex = -1;
             char column = coordinates[0];
             switch(column)
             {
                 case 'a':
-                    arrayRowIndex = 1;
+                    arrayColumnIndex = 1;
                     break;
                 case 'b':
-                    arrayRowIndex = 2;
+                    arrayColumnIndex = 2;
                     break;
                 case 'c':
-                    arrayRowIndex = 3;
+                    arrayColumnIndex = 3;
                     break;
                 case 'd':
-                    arrayRowIndex = 4;
+                    arrayColumnIndex = 4;
                     break;
                 case 'e':
-                    arrayRowIndex = 5;
+                    arrayColumnIndex = 5;
                     break;
                 case 'f':
-                    arrayRowIndex = 6;
+                    arrayColumnIndex = 6;
                     break;
                 case 'g':
-                    arrayRowIndex = 7;
+                    arrayColumnIndex = 7;
                     break;
                 case 'h':
-                    arrayRowIndex = 8;
+                    arrayColumnIndex = 8;
                     break;
                 case 'i':
-                    arrayRowIndex = 9;
+                    arrayColumnIndex = 9;
                     break;
                 case 'j':
-                    arrayRowIndex = 10;
+                    arrayColumnIndex = 10;
                     break;
             }
-            return arrayRowIndex;
+            return arrayColumnIndex;
         }
 
-        public int ParseColumn(string coordiantes)
+        public int ParseRow(string coordiantes)
         {
-            int arrayColumnIndex = int.Parse(coordiantes.Substring(1));
-            return arrayColumnIndex;
+            int arrayRowIndex = int.Parse(coordiantes.Substring(1));
+            return arrayRowIndex;
         }
     }
 }
